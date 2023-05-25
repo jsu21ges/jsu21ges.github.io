@@ -15,4 +15,8 @@ p{
 
 #ship_one img{
     background-color: silver;
+    padding: 20px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: green;
 }
