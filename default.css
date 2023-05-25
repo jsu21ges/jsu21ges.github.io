@@ -6,3 +6,9 @@ h1{
     color: red;
     font-size: 24;
 }
+
+p{
+    font-family: "Arial", "Helvectica", sans-serif;
+    font-size: 16px;
+    color: black;
+}
