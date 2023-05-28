@@ -20,6 +20,8 @@ p{
     font-family: 'Aclonica', sans-serif;
     font-size: 16px;
     color: white;
+    position: absolute; left: 200px;
+
 }
 
 #ship_one img{
