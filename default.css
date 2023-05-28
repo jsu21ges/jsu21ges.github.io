@@ -1,6 +1,9 @@
 body {
     background-image: url('../images/desktop-wallpaper-julie-quinn-on-long-tall-vertical-pins-space-vertical.jpg');
-    
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 h1{
