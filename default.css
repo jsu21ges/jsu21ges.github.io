@@ -3,14 +3,14 @@ body {
 }
 
 h1{
-    /* color: red; */
+    color: white;
     font-size: 24;
 }
 
 p{
     font-family: 'Aclonica', sans-serif;
     font-size: 16px;
-    color: black;
+    color: white;
 }
 
 #ship_one img{
