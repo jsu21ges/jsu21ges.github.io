@@ -11,6 +11,11 @@ h1{
     font-size: 24;
 }
 
+h5{
+    color: whitesmoke;
+    font-size: 16;
+}
+
 p{
     font-family: 'Aclonica', sans-serif;
     font-size: 16px;
@@ -18,10 +23,10 @@ p{
 }
 
 #ship_one img{
-    background-color: silver;
+    /* background-color: rgba(68, 115, 150, 0.272);
     padding: 20px;
     border-style: solid;
     border-width: 3px;
-    border-color: green;
+    border-color: green; */
     position: absolute; top: 75px; left: 400px;
 }
