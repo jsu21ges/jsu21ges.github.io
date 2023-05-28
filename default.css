@@ -1,6 +1,6 @@
 body {
     background-color:  powderblue;
-    background-image: url("ftl_background.png");
+    background-image: url('../images/ftl_background.png');
 }
 
 h1{
