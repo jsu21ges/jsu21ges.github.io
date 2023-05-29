@@ -15,7 +15,7 @@ h5{
 }
 
 p{
-    font-family: 'Aclonica', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     color: whitesmoke;
     line-height: 1.5;
@@ -30,7 +30,7 @@ p{
 }
 
 #par_three p{
-    position: absolute; top:1000px; left: 100px;
+    position: absolute; top:1300px; left: 100px;
 }
 
 #ship_one img{
@@ -41,4 +41,8 @@ p{
     border-color: green; */
     position: absolute; top: 75px; left: 500px;
     scale: 0.8;
+}
+
+#ship_xray img{
+    position: absolute; top: 450px; left: 100px;
 }
