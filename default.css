@@ -1,7 +1,6 @@
 body {
     background-image: url('../../images/374109.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    
 }
 
 h1{
@@ -18,6 +17,7 @@ p{
     font-family: 'Aclonica', sans-serif;
     font-size: 16px;
     color: whitesmoke;
+    line-height: 1.5;
 }
 
 #par_one p{
@@ -25,11 +25,11 @@ p{
 }
 
 #par_two p{
-    position: absolute; top: 500px; left: 100px; right: 775px;
+    position: absolute; top: 700px; left: 100px; right: 775px;
 }
 
 #par_three p{
-    position: absolute; top:800px; left: 100px;
+    position: absolute; top:1000px; left: 100px;
 }
 
 #ship_one img{
