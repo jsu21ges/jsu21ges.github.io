@@ -40,7 +40,7 @@ p{
 }
 
 #par_two p{
-    position: absolute; top: 925px; left: 725px; right: 50px;
+    position: absolute; top: 925px; left: 100px; right: 600px;
 }
 
 #par_three p{
@@ -63,9 +63,14 @@ p{
 }
 
 #weapons img{
-    position: absolute; top: 950px; left: 75px;
+    position: absolute; top: 900px; left: 700px;
+    scale: .9;
 }
 
 ul{
     color: whitesmoke;
+}
+
+#space p{
+    position: absolute; top: 1700px;
 }
