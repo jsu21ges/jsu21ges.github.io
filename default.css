@@ -23,6 +23,7 @@ p{
 
 #table ul{
     position:absolute; top: 100px; left: 900px;
+    z-index: 2;
 }
 
 #par_one p{
@@ -30,11 +31,11 @@ p{
 }
 
 #explore_galaxy p{
-    position: absolute; top: 500px; left: 725px;
+    position: absolute; top: 500px; left: 725px; right: 50px;
 }
 
 #par_two p{
-    position: absolute; top: 700px; left: 725px;
+    position: absolute; top: 700px; left: 725px; right: 50px;
 }
 
 #par_three p{
@@ -54,4 +55,8 @@ p{
 #ship_xray img{
     position: absolute; top: 450px; left: 0px;
     scale: 0.8;
+}
+
+#ftl_weapons img{
+    position: absolute; top: 700px; left: 50px;
 }
