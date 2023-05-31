@@ -9,17 +9,88 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Justin Su.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Justin Su" startnode="1" creator="Twine" creator-version="2.6.2" format="Harlowe" format-version="3.3.5" ifid="13FB7322-0AAD-461D-A576-E43A677340E8" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="start" tags="" position="350,75" size="100,100">&lt;strong&gt;&lt;em&gt;You are a autronaut stuck in an abandoned space station. Find the control center of the space station and send a distress signal for help!&lt;/em&gt;&lt;/strong&gt;
+<tw-storydata name="Justin Su" startnode="1" creator="Twine" creator-version="2.6.2" format="Harlowe" format-version="3.3.5" ifid="13FB7322-0AAD-461D-A576-E43A677340E8" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-passage{
+  width: 1800px;
+  height: 850px;
+  border-style: solid;
+  border-color: white;
+  padding: 50px;
+  background-image: url("https://jsu21ges.github.io/images/space_station.jpg");
+  max-width: 99%;
+  height: auto;
+  
+}
+
+
+
+tw-sidebar{
+  display: none;
+}
+
+#fed_cruiser{
+  position: absolute; top: 150px; left: 150px;
+  scale: .5;
+}
+
+tw-story {
+  background-color: black;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="start" tags="" position="350,75" size="100,100">&lt;div id= &quot;par1&quot;&gt;&lt;strong&gt;&lt;em&gt;You are a autronaut stuck in an abandoned space station. Find the control center of the space station and send a distress signal for help!&lt;/em&gt;&lt;/strong&gt; &lt;/div&gt;
 [[Look around]]
 [[Check your belongings]]
 
 (set: $name = &quot;green&quot;)
+(set: $health = 100)
+(set: $gun = 0)
+(set: $ID =false)
+(set: $flashlight =false)
+(set: $consumables = 0)
 
-Are there booleans?
-How to let user input?</tw-passagedata><tw-passagedata pid="2" name="Look around" tags="" position="275,200" size="100,100">[[go back -&gt;start]]
-</tw-passagedata><tw-passagedata pid="3" name="Check your belongings" tags="" position="425,200" size="100,100">&lt;img src=&quot;jsu21ges.github.io/images/Federation_Cruiser_A.webp&quot;
+How to let user input?</tw-passagedata><tw-passagedata pid="2" name="Look around" tags="" position="275,200" size="100,100">&lt;strong&gt;&lt;em&gt;You see two doors, one going towards the engines room and the other going towards the med bay, which way do you go?&lt;/em&gt;&lt;/strong&gt;
 
-Your color is $name.</tw-passagedata></tw-storydata>
+[[Engines]]
+[[Med Bay]]
+[[Check your belongings-&gt;Check your belongings]]
+</tw-passagedata><tw-passagedata pid="3" name="Check your belongings" tags="" position="425,200" size="100,100">//&#39;&#39;You look into your bag to check if you have anything:&#39;&#39;//
+(if: $gun &gt; 1) [You have $gun weapons]\
+(else-if: $gun is 1) [You have 1 weapon]\
+(else:) [You have no weapons]
+
+(if: $ID) [You have your Identification badge]\
+(else:)[You do not have your Identification badge]
+
+(if: $flashlight) [You have a flashlight]\
+(else:)[You do not have a flashlight]
+
+[[Look around-&gt;Look around]] 
+
+&lt;div id=&quot;fed_cruiser&quot;&gt;
+&lt;img src=&quot;https://jsu21ges.github.io/images/Federation_Cruiser_A.webp&quot;&gt;
+&lt;/div&gt;
+Your color is $name.</tw-passagedata><tw-passagedata pid="4" name="Engines" tags="" position="275,325" size="100,100">You find a //&#39;&#39;Burst Laser II&#39;&#39;// laying next to the control panel in the engines room!
+
+(set: $gun = $gun + 1)
+
+Well it&#39;s yours now!
+
+[[Check your belongings]] </tw-passagedata><tw-passagedata pid="5" name="Med Bay" tags="" position="400,325" size="100,100">{
+|TheGun&gt;[
+(link: &quot;Take the gun&quot;)[
+(replace: ?TheGun)[you break the gun]
+]
+or(link: &quot; refuse it&quot;)[
+(replace: ?TheGun)[you refuse the gun]
+]
+]
+}
+
+(link: &quot;FTL&quot;) [My fav game]
+(mouseover: &quot;FTL&quot;)[Best game ever made]
+[This requires a click.]&lt;shout| (click: ?shout)[She prefer mouseover.]
+
+
+(set: $number to (random:1,6))
+[Your number is $number.]
+[[try again-&gt;Med Bay]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
