@@ -9,15 +9,13 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Justin Su.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Justin Su" startnode="1" creator="Twine" creator-version="2.6.2" format="Harlowe" format-version="3.3.5" ifid="13FB7322-0AAD-461D-A576-E43A677340E8" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-passage{
-  width: 1800px;
-  height: 850px;
+<tw-storydata name="Justin Su" startnode="10" creator="Twine" creator-version="2.6.2" format="Harlowe" format-version="3.3.5" ifid="13FB7322-0AAD-461D-A576-E43A677340E8" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-passage{
+  width: 800px;
+  height: 550px;
   border-style: solid;
   border-color: white;
   padding: 50px;
-  background-image: url("https://jsu21ges.github.io/images/space_station.jpg");
-  max-width: 99%;
-  height: auto;
+  background-color: rgba(32, 32, 32, 0.482);
   
 }
 
@@ -33,64 +31,168 @@ tw-sidebar{
 }
 
 tw-story {
-  background-color: black;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="start" tags="" position="350,75" size="100,100">&lt;div id= &quot;par1&quot;&gt;&lt;strong&gt;&lt;em&gt;You are a autronaut stuck in an abandoned space station. Find the control center of the space station and send a distress signal for help!&lt;/em&gt;&lt;/strong&gt; &lt;/div&gt;
-[[Look around]]
-[[Check your belongings]]
+  background-image: url("https://jsu21ges.github.io/images/space_station.jpg");
+  max-width: 99%;
+  height: auto;
+  background-size: cover;
+}
 
-(set: $name = &quot;green&quot;)
-(set: $health = 100)
-(set: $gun = 0)
-(set: $ID =false)
-(set: $flashlight =false)
-(set: $consumables = 0)
+tw-link {
+  color: rgb(128, 200, 255);
+}
 
-How to let user input?</tw-passagedata><tw-passagedata pid="2" name="Look around" tags="" position="275,200" size="100,100">&lt;strong&gt;&lt;em&gt;You see two doors, one going towards the engines room and the other going towards the med bay, which way do you go?&lt;/em&gt;&lt;/strong&gt;
+#spooder{
+  position: absolute; top:60px; left: 50px;
+}
 
-[[Engines]]
+#bl2{
+  position: absolute; top:60px; left: 50px;
+  scale: .5
+}
+
+#ID{
+  position: absolute; top:20px; left: 50px;
+    scale: .4
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Look around" tags="" position="200,175" size="100,100">It looks like you are currently in the backup generator room.
+(set: $number to (random: 1,4))
+(if: $number is 1)[&#39;&#39;You search around the room and end up finding a powerful //flashlight//! It&#39;s always nice to have a light in case of emergencies, isn&#39;t it.&#39;&#39;
+(set:$flashlight to $flashlight + 1)]
+
+
+You take a peak outside the room to find a long corridor, one side going to the Engines room and the other side leading to the med bay. Which way do you go?
+
+[[Engines -&gt;ECorridors]]
 [[Med Bay]]
-[[Check your belongings-&gt;Check your belongings]]
-</tw-passagedata><tw-passagedata pid="3" name="Check your belongings" tags="" position="425,200" size="100,100">//&#39;&#39;You look into your bag to check if you have anything:&#39;&#39;//
-(if: $gun &gt; 1) [You have $gun weapons]\
-(else-if: $gun is 1) [You have 1 weapon]\
-(else:) [You have no weapons]
+[[Check your belongings]]
+</tw-passagedata><tw-passagedata pid="2" name="Check your belongings" tags="" position="575,150" size="100,100">You look into your bag to check what&#39;s in there:
+
+(if: $gun is 1) [You have 1 weapon]\
+(else:) [You have $gun weapons]
 
 (if: $ID) [You have your Identification badge]\
-(else:)[You do not have your Identification badge]
+(else:)[You don&#39;t have your Identification badge, you must have left it in the Engines room]
 
-(if: $flashlight) [You have a flashlight]\
-(else:)[You do not have a flashlight]
+(if: $flashlight is 1) [You have 1 flashlight]\
+(else:)[You have $flashlight flashlights]
 
-[[Look around-&gt;Look around]] 
+(if: $consumables is 1) [You have 1 consumable]\
+(else:) [You have $consumables consumables]
 
-&lt;div id=&quot;fed_cruiser&quot;&gt;
-&lt;img src=&quot;https://jsu21ges.github.io/images/Federation_Cruiser_A.webp&quot;&gt;
+[[Look around]] </tw-passagedata><tw-passagedata pid="3" name="ECorridors" tags="" position="275,325" size="100,100">(set: $number = (random:1,6))
+(if: $number is 1 or 2 or 3)[(goto: &quot;spooder&quot;)]
+(else-if:$number is &gt; 4)[(goto:&quot;free weapon&quot;)]
+(else:)[You walk through the corridor cautiously [[Continue to the Engines room-&gt;Engines]]]</tw-passagedata><tw-passagedata pid="4" name="Med Bay" tags="" position="500,325" size="100,100">You get to the Med Bay without a problem.
+
+(set: $number to (random:1,6))
+(if: $number is 1)[You get to the med bay and find loads of material and items. You found  //&#39;&#39;3 consumables&#39;&#39;// and a //&#39;&#39;Burst Laser II&#39;&#39;//. What an excellent find! (set: $consumables to $consumables + 3) (set: $guns to $guns + 1)]
+(else-if: $number is 2 or 3 or 4)[You get to the med bay and find a good deal of material and items. You found //&#39;&#39;2 consumables&#39;&#39;// and a //&#39;&#39;powerful flashlight&#39;&#39;// (set: $consumables to $consumables + 2) (set: $flashlight to $flashlight + 1)]
+(else:)[You get to the med bay, but the facility has been stripped bare. You scrounge around and manage to find a //&#39;&#39;consumable&#39;&#39;// and store it in your bag. (set: $consumables to $consumables + 1)]
+
+[[Continue to the Engines room -&gt;ECorridors]]</tw-passagedata><tw-passagedata pid="5" name="spooder" tags="" position="700,225" size="100,100">Suddenly a man-sized arachnid bursts from a vent in the ceiling, followed by countless more.
+
+
+&lt;div id=&quot;spooder&quot;&gt;
+&lt;img src=&quot;https://jsu21ges.github.io/images/spooder.webp&quot;&gt;
 &lt;/div&gt;
-Your color is $name.</tw-passagedata><tw-passagedata pid="4" name="Engines" tags="" position="275,325" size="100,100">You find a //&#39;&#39;Burst Laser II&#39;&#39;// laying next to the control panel in the engines room!
+
+
+
+
+
+
+Do you [[fight]] or [[run]]?</tw-passagedata><tw-passagedata pid="6" name="fight" tags="" position="650,350" size="100,100">(if: $gun is 0)[You reach into your bag to look for a weapon, but the only thing you can find is a your old pocket hatchet!
+(set:$number to (random: 1,5))
+	(if:$number is 1 or 2)[You manage to valiantly fight off the fearsome arachnids. However you have sustained severe wounds in the process.
+		(if:$consumables is 0)[You look into your bag desperately to see if there is anything that can restore your health. Ultimately you find nothing. [[continue-&gt;death]]]\
+		(else:)[You look into your bag and find a consumable and quickly snarf it down. Much to your relief, you can feel your body recover rapidly. (set:$consumables to $consumables - 1)[[Continue to the engines room-&gt;Engines]]]
+        ]
+    (else-if: $number is 3)[You chop away for what seems to be hours. Finally is seems like the last of the spiders have been dealt with. All that&#39;s left in your wake is a trail of green blood and spider parts.
+    
+    Miraculously, you come out virtually unscathed.[[Continue to the engines room -&gt;Engines]]]
+	(else:)[You fight valiantly but are overwhelmed by the mass of spiders flooding into the corridors. You become food for the swarm of arachnids. [[Restart?-&gt;start]]
+    ]
+]\
+
+(else-if: $gun is 1)[You pull out a burst laser and start blasting. 
+	(set:$number to (random: 1,3))
+	(if:$number is 3)[You make short work of most of the fearsome spiders. However just when you think it&#39;s over, one of the spiders gets up and charges at you, inflicting a deep wound onto you before you put it down.
+		(if:$consumables is 0)[You look into your bag desperately to see if there is anything that can restore your health. Ultimately you find nothing. [[continue-&gt;death]]]\
+		(else:)[You look into your bag and find a consumable and quickly snarf it down. Much to your relief, you can feel your body recover rapidly. (set:$consumables to $consumables - 1)[[Continue to the engines room-&gt;Engines]]]]
+	(else:)[You make short work of the fearsome spiders. [[Continue to the engines room-&gt;Engines]]]
+        ]\
+(else:)[You pull out two burst lasers from your bag and go on a rampage.
+ When the smoke settles, all you can see are charred spider bodies. [[Continue to the engines room-&gt;Engines]]
+ ]</tw-passagedata><tw-passagedata pid="7" name="run" tags="" position="775,350" size="100,100">(set: $number to (random: 1,5)
+(if: $number is 1)[The Spiders burst through the door and quickly overwhelm you. You don&#39;t even have time to reach for a weapon before they tear you apart. &#39;&#39;//You have died.//&#39;&#39;[[Restart?-&gt;start]]]\ 
+(else:)[You sprint back to the Backup Generator and quickly force the doors shut. You can hear the spider clawing at the doors, but thankfully they leave after a while. Do you try and head back to the [[Engines room-&gt;Engines]] or go to the [[Med Bay]]? </tw-passagedata><tw-passagedata pid="8" name="free weapon" tags="" position="900,225" size="100,100">(if: $gun is 0) [On the way to the engines room, you find a //&#39;&#39;Burst Laser II&#39;&#39;// laying in the middle of a corridor.]
+(else-if: $gun is 1)[While you&#39;re walking down the corridor you manage to find another //&#39;&#39;Burst Laser II&#39;&#39;//!! How lucky]
+(else:)[Somehow, you manage to find yet another //&#39;&#39;Burst Laser II&#39;&#39;//!!! Your luck must be crazy!]
+
+&lt;div id=&quot;bl2&quot;&gt;
+&lt;img src=&quot;https://jsu21ges.github.io/images/burst_laser.png&quot;&gt;
+&lt;/div&gt;
 
 (set: $gun = $gun + 1)
 
 Well it&#39;s yours now!
 
-[[Check your belongings]] </tw-passagedata><tw-passagedata pid="5" name="Med Bay" tags="" position="400,325" size="100,100">{
-|TheGun&gt;[
-(link: &quot;Take the gun&quot;)[
-(replace: ?TheGun)[you break the gun]
-]
-or(link: &quot; refuse it&quot;)[
-(replace: ?TheGun)[you refuse the gun]
-]
-]
-}
+[[continue-&gt;ECorridors]] </tw-passagedata><tw-passagedata pid="9" name="death" tags="" position="600,475" size="100,100">&#39;&#39;Your breathing gets heavier as the blood loss starts affecting your body. Everything fades into darkness...
+&#39;&#39;
 
-(link: &quot;FTL&quot;) [My fav game]
-(mouseover: &quot;FTL&quot;)[Best game ever made]
-[This requires a click.]&lt;shout| (click: ?shout)[She prefer mouseover.]
+//&#39;&#39;You have died.&#39;&#39;// [[Restart?-&gt;start]]</tw-passagedata><tw-passagedata pid="10" name="start" tags="" position="350,75" size="100,100">&lt;div id= &quot;par1&quot;&gt;You are a autronaut stuck in an abandoned space station. Find the piloting room of the space station and send a distress signal for help!&lt;/div&gt;
+[[Look around]]
+[[Check your belongings]]
+
+(set: $gun = 0)
+(set: $ID =false)
+(set: $flashlight = 0)
+(set: $consumables = 0)
+</tw-passagedata><tw-passagedata pid="11" name="Piloting" tags="" position="450,575" size="100,100">(if: $ID = true)[You get to the piloting room and use your Identification Card to enter the room. 
+
+The Piloting System seems to be offline]
+(else:)[You get to the door of the piloting room, but realize the door is locked. To your dismay, you realize that you forgot to bring your Identification Card. You might have left it in the Sensors room. [[]]]</tw-passagedata><tw-passagedata pid="12" name="Take inventory" tags="" position="200,575" size="100,100">You look into your bag to check what&#39;s in there:
+
+(if: $gun is 1) [You have 1 weapon]\
+(else:) [You have $gun weapons]
+
+(if: $ID) [You have your Identification badge]\
+(else:)[You don&#39;t have your Identification badge]
+
+(if: $flashlight is 1) [You have 1 flashlight]\
+(else:)[You have $flashlight flashlights]
+
+(if: $consumables is 1) [You have 1 consumable]\
+(else:) [You have $consumables consumables]
+
+[[Continue-&gt;Engines]]</tw-passagedata><tw-passagedata pid="13" name="Turn on your flashlight" tags="" position="200,450" size="100,100">You turn on your flashlight and the rooms lights up like Christmas. It looks like you left your //&#39;&#39;Identification Card&#39;&#39;// here. 
+
+&lt;div id=&quot;ID&quot;&gt;
+&lt;img src=&quot;https://jsu21ges.github.io/images/ID.png&quot;&gt;
+&lt;/div&gt;
 
 
-(set: $number to (random:1,6))
-[Your number is $number.]
-[[try again-&gt;Med Bay]] </tw-passagedata></tw-storydata>
+
+
+
+
+
+
+You quickly grab it and put it into your bag. (set: $ID to true)
+
+The Engines room is connected to the piloting room and the sensors room. Which way do you go?
+
+[[Sensors]]
+[[Piloting]]
+</tw-passagedata><tw-passagedata pid="14" name="Engines" tags="" position="325,450" size="100,100">You get to the Engines room. The power seems to be off in this room, so you can&#39;t see much.
+
+[[Turn on your flashlight]]
+[[Attempt to search for items without a light]]
+[[Take inventory]]
+
+(if: $number is 1)[It looks like you left your //&#39;&#39;Identification Card&#39;&#39;// here. You quickly grab it and put it into your bag. (set: $ID to true)]\
+(else:)[You look around but you don&#39;t find anything.]
+
+</tw-passagedata><tw-passagedata pid="15" name="Sensors" tags="" position="75,575" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="Attempt to search for items without a light" tags="" position="325,575" size="100,100"></tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
