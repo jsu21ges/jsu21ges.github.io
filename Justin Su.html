@@ -122,7 +122,7 @@ Do you [[fight]] or [[run]]?</tw-passagedata><tw-passagedata pid="6" name="fight
         ]\
 (else:)[You pull out two burst lasers from your bag and go on a rampage.
  When the smoke settles, all you can see are charred spider bodies. [[Continue to the engines room-&gt;Engines]]
- ]</tw-passagedata><tw-passagedata pid="7" name="run" tags="" position="775,350" size="100,100">(set: $number to (random: 1,5)
+ ]</tw-passagedata><tw-passagedata pid="7" name="run" tags="" position="775,350" size="100,100">(set: $number to (random: 1,5))
 (if: $number is 1)[The Spiders burst through the door and quickly overwhelm you. You don&#39;t even have time to reach for a weapon before they tear you apart. &#39;&#39;//You have died.//&#39;&#39;[[Restart?-&gt;start]]]\ 
 (else:)[You sprint back to the Backup Generator and quickly force the doors shut. You can hear the spider clawing at the doors, but thankfully they leave after a while. Do you try and head back to the [[Engines room-&gt;Engines]] or go to the [[Med Bay]]? </tw-passagedata><tw-passagedata pid="8" name="free weapon" tags="" position="900,225" size="100,100">(if: $gun is 0) [On the way to the engines room, you find a //&#39;&#39;Burst Laser II&#39;&#39;// laying in the middle of a corridor.]
 (else-if: $gun is 1)[While you&#39;re walking down the corridor you manage to find another //&#39;&#39;Burst Laser II&#39;&#39;//!! How lucky]
