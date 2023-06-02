@@ -53,6 +53,21 @@ tw-link {
 #ID{
   position: absolute; top:20px; left: 50px;
     scale: .4
+}
+
+#gas{
+  position: absolute; top: 250px; left: 250px;
+}
+
+#explo{
+  position: absolute; top: 0px; left: 150px;
+  scale: 2;
+  z-index: -1;
+}
+
+#ID2{
+    position: absolute; top:0px; left: 50px;
+  scale: .4;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Look around" tags="" position="200,175" size="100,100">It looks like you are currently in the backup generator room.
 (set: $number to (random: 1,4))
 (if: $number is 1)[&#39;&#39;You search around the room and end up finding a powerful //flashlight//! It&#39;s always nice to have a light in case of emergencies, isn&#39;t it.&#39;&#39;
@@ -81,10 +96,11 @@ You take a peak outside the room to find a long corridor, one side going to the 
 [[Look around]] </tw-passagedata><tw-passagedata pid="3" name="ECorridors" tags="" position="275,325" size="100,100">(set: $number = (random:1,6))
 (if: $number is 1 or 2 or 3)[(goto: &quot;spooder&quot;)]
 (else-if:$number is &gt; 4)[(goto:&quot;free weapon&quot;)]
-(else:)[You walk through the corridor cautiously [[Continue to the Engines room-&gt;Engines]]]</tw-passagedata><tw-passagedata pid="4" name="Med Bay" tags="" position="500,325" size="100,100">You get to the Med Bay without a problem.
+(else:)[You walk through the corridor cautiously. 
+[[Continue to the Engines room-&gt;Engines]]]</tw-passagedata><tw-passagedata pid="4" name="Med Bay" tags="" position="475,325" size="100,100">You get to the Med Bay without a problem.
 
 (set: $number to (random:1,6))
-(if: $number is 1)[You get to the med bay and find loads of material and items. You found  //&#39;&#39;3 consumables&#39;&#39;// and a //&#39;&#39;Burst Laser II&#39;&#39;//. What an excellent find! (set: $consumables to $consumables + 3) (set: $guns to $guns + 1)]
+(if: $number is 1)[You get to the med bay and find loads of material and items. You found  //&#39;&#39;3 consumables&#39;&#39;// and a //&#39;&#39;Burst Laser II&#39;&#39;//. What an excellent find! (set: $consumables to $consumables + 3) (set: $gun to $gun + 1)]
 (else-if: $number is 2 or 3 or 4)[You get to the med bay and find a good deal of material and items. You found //&#39;&#39;2 consumables&#39;&#39;// and a //&#39;&#39;powerful flashlight&#39;&#39;// (set: $consumables to $consumables + 2) (set: $flashlight to $flashlight + 1)]
 (else:)[You get to the med bay, but the facility has been stripped bare. You scrounge around and manage to find a //&#39;&#39;consumable&#39;&#39;// and store it in your bag. (set: $consumables to $consumables + 1)]
 
@@ -103,12 +119,14 @@ You take a peak outside the room to find a long corridor, one side going to the 
 Do you [[fight]] or [[run]]?</tw-passagedata><tw-passagedata pid="6" name="fight" tags="" position="650,350" size="100,100">(if: $gun is 0)[You reach into your bag to look for a weapon, but the only thing you can find is a your old pocket hatchet!
 (set:$number to (random: 1,5))
 	(if:$number is 1 or 2)[You manage to valiantly fight off the fearsome arachnids. However you have sustained severe wounds in the process.
-		(if:$consumables is 0)[You look into your bag desperately to see if there is anything that can restore your health. Ultimately you find nothing. [[continue-&gt;death]]]\
-		(else:)[You look into your bag and find a consumable and quickly snarf it down. Much to your relief, you can feel your body recover rapidly. (set:$consumables to $consumables - 1)[[Continue to the engines room-&gt;Engines]]]
+		(if:$consumables is 0)[You look into your bag desperately to see if there is anything that can restore your health. Ultimately you find nothing. 
+        [[Try to stop the bleeding with your hands-&gt;death]]]\
+		(else:)[You look into your bag and find a consumable. Do you [[take the consumable]] or [[try to stop the bleeding with your hands-&gt;death]]?]
         ]
     (else-if: $number is 3)[You chop away for what seems to be hours. Finally is seems like the last of the spiders have been dealt with. All that&#39;s left in your wake is a trail of green blood and spider parts.
     
-    Miraculously, you come out virtually unscathed.[[Continue to the engines room -&gt;Engines]]]
+    Miraculously, you come out virtually unscathed.
+    [[Continue to the engines room -&gt;Engines]]]
 	(else:)[You fight valiantly but are overwhelmed by the mass of spiders flooding into the corridors. You become food for the swarm of arachnids. [[Restart?-&gt;start]]
     ]
 ]\
@@ -116,15 +134,20 @@ Do you [[fight]] or [[run]]?</tw-passagedata><tw-passagedata pid="6" name="fight
 (else-if: $gun is 1)[You pull out a burst laser and start blasting. 
 	(set:$number to (random: 1,3))
 	(if:$number is 3)[You make short work of most of the fearsome spiders. However just when you think it&#39;s over, one of the spiders gets up and charges at you, inflicting a deep wound onto you before you put it down.
-		(if:$consumables is 0)[You look into your bag desperately to see if there is anything that can restore your health. Ultimately you find nothing. [[continue-&gt;death]]]\
-		(else:)[You look into your bag and find a consumable and quickly snarf it down. Much to your relief, you can feel your body recover rapidly. (set:$consumables to $consumables - 1)[[Continue to the engines room-&gt;Engines]]]]
-	(else:)[You make short work of the fearsome spiders. [[Continue to the engines room-&gt;Engines]]]
+		(if:$consumables is 0)[You look into your bag desperately to see if there is anything that can restore your health. Ultimately you find nothing. 
+        [[try to stop the bleeding with your hands-&gt;death]]]\
+		(else:)[You look into your bag and find a consumable. Do you [[take the consumable]] or [[try to stop the bleeding with your hands-&gt;death]]?]
+        ]
+	(else:)[You make short work of the fearsome spiders. 
+    [[Continue to the engines room-&gt;Engines]]]
         ]\
 (else:)[You pull out two burst lasers from your bag and go on a rampage.
- When the smoke settles, all you can see are charred spider bodies. [[Continue to the engines room-&gt;Engines]]
+ When the smoke settles, all you can see are charred spider bodies. 
+ [[Continue to the engines room-&gt;Engines]]
  ]</tw-passagedata><tw-passagedata pid="7" name="run" tags="" position="775,350" size="100,100">(set: $number to (random: 1,5))
-(if: $number is 1)[The Spiders burst through the door and quickly overwhelm you. You don&#39;t even have time to reach for a weapon before they tear you apart. &#39;&#39;//You have died.//&#39;&#39;[[Restart?-&gt;start]]]\ 
-(else:)[You sprint back to the Backup Generator and quickly force the doors shut. You can hear the spider clawing at the doors, but thankfully they leave after a while. Do you try and head back to the [[Engines room-&gt;Engines]] or go to the [[Med Bay]]? </tw-passagedata><tw-passagedata pid="8" name="free weapon" tags="" position="900,225" size="100,100">(if: $gun is 0) [On the way to the engines room, you find a //&#39;&#39;Burst Laser II&#39;&#39;// laying in the middle of a corridor.]
+(if: $number is 1)[The Spiders burst through the door and quickly overwhelm you. You don&#39;t even have time to reach for a weapon before they tear you apart. &#39;&#39;//You have died.//&#39;&#39; [[Restart?-&gt;start]]]\
+
+(else:)[You sprint back to the Backup Generator and quickly force the doors shut. You can hear the spider clawing at the doors, but thankfully they leave after a while. Do you try and head back to the [[Engines room-&gt;Engines]] or go to the [[Med Bay]]? ]</tw-passagedata><tw-passagedata pid="8" name="free weapon" tags="" position="900,225" size="100,100">(if: $gun is 0) [On the way to the engines room, you find a //&#39;&#39;Burst Laser II&#39;&#39;// laying in the middle of a corridor.]
 (else-if: $gun is 1)[While you&#39;re walking down the corridor you manage to find another //&#39;&#39;Burst Laser II&#39;&#39;//!! How lucky]
 (else:)[Somehow, you manage to find yet another //&#39;&#39;Burst Laser II&#39;&#39;//!!! Your luck must be crazy!]
 
@@ -136,7 +159,7 @@ Do you [[fight]] or [[run]]?</tw-passagedata><tw-passagedata pid="6" name="fight
 
 Well it&#39;s yours now!
 
-[[continue-&gt;ECorridors]] </tw-passagedata><tw-passagedata pid="9" name="death" tags="" position="600,475" size="100,100">&#39;&#39;Your breathing gets heavier as the blood loss starts affecting your body. Everything fades into darkness...
+[[continue-&gt;ECorridors]] </tw-passagedata><tw-passagedata pid="9" name="death" tags="" position="600,475" size="100,100">&#39;&#39;You desperately try to stop the bleeding with your hands, but to no avail. Your breathing gets heavier as the blood loss starts affecting your body. Everything fades into darkness...
 &#39;&#39;
 
 //&#39;&#39;You have died.&#39;&#39;// [[Restart?-&gt;start]]</tw-passagedata><tw-passagedata pid="10" name="start" tags="" position="350,75" size="100,100">&lt;div id= &quot;par1&quot;&gt;You are a autronaut stuck in an abandoned space station. Find the piloting room of the space station and send a distress signal for help!&lt;/div&gt;
@@ -147,10 +170,27 @@ Well it&#39;s yours now!
 (set: $ID =false)
 (set: $flashlight = 0)
 (set: $consumables = 0)
-</tw-passagedata><tw-passagedata pid="11" name="Piloting" tags="" position="450,575" size="100,100">(if: $ID = true)[You get to the piloting room and use your Identification Card to enter the room. 
+</tw-passagedata><tw-passagedata pid="11" name="Piloting" tags="" position="150,625" size="100,100">(if: $ID is true)[You get to the piloting room and use your Identification Card to enter the room. 
 
-The Piloting System seems to be offline]
-(else:)[You get to the door of the piloting room, but realize the door is locked. To your dismay, you realize that you forgot to bring your Identification Card. You might have left it in the Sensors room. [[]]]</tw-passagedata><tw-passagedata pid="12" name="Take inventory" tags="" position="200,575" size="100,100">You look into your bag to check what&#39;s in there:
+The distress signal seems to be broken. Thankfully you find an emergency exit pod at the front of the piloting room that is ready to go!
+
+{
+|Wait&gt;[
+(link: &quot;Get in the pod and escape&quot;)[
+(replace: ?Wait)[You hurriedly crawl into the emergency pod and press the eject button. [[continue-&gt;Bad end]]]
+]
+
+or
+(link: &quot;deal with the spiders once and for all.&quot;)[
+(replace: ?Wait)[You decide to take this spider infestation into your own hands. You set the space station to self detonate upon command. [[continue-&gt;bomb]]]
+]
+]
+}
+]
+
+(else:)[You get to the door of the piloting room, but realize the door is locked. To your dismay, you realize that you forgot to bring your Identification Card. You&#39;ll have to go back to find it. 
+[[Go to the Sensors room to look for your ID-&gt;SCorridor]]
+[[Head back to the Engines room-&gt;Engines]]]</tw-passagedata><tw-passagedata pid="12" name="Take inventory" tags="" position="450,475" size="100,100">You look into your bag to check what&#39;s in there:
 
 (if: $gun is 1) [You have 1 weapon]\
 (else:) [You have $gun weapons]
@@ -181,18 +221,115 @@ You quickly grab it and put it into your bag. (set: $ID to true)
 
 The Engines room is connected to the piloting room and the sensors room. Which way do you go?
 
-[[Sensors]]
+[[Sensors-&gt;SCorridor]]
 [[Piloting]]
 </tw-passagedata><tw-passagedata pid="14" name="Engines" tags="" position="325,450" size="100,100">You get to the Engines room. The power seems to be off in this room, so you can&#39;t see much.
 
-[[Turn on your flashlight]]
+(if: $flashlight &gt; 0)[[[Turn on your flashlight-&gt;Turn on your flashlight]]]
 [[Attempt to search for items without a light]]
 [[Take inventory]]
+</tw-passagedata><tw-passagedata pid="15" name="SCorridor" tags="" position="25,575" size="100,100">You hear a creaks and rattles across the hall as you walk to the Sensors room. You pick up the pace a little.
 
-(if: $number is 1)[It looks like you left your //&#39;&#39;Identification Card&#39;&#39;// here. You quickly grab it and put it into your bag. (set: $ID to true)]\
-(else:)[You look around but you don&#39;t find anything.]
+Suddenly, the ground shakes and begins to crack. The cracks get larger and larger. You see a giant alien spider emerge from the cracks and head strait towards you!
 
-</tw-passagedata><tw-passagedata pid="15" name="Sensors" tags="" position="75,575" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="Attempt to search for items without a light" tags="" position="325,575" size="100,100"></tw-passagedata></tw-storydata>
+&lt;div id = &quot;gas&quot;&gt;
+&lt;img src = &quot;https://jsu21ges.github.io/images/gas.gif&quot;&gt;
+&lt;/div&gt;
+
+[[Fight]]
+[[Run]]</tw-passagedata><tw-passagedata pid="16" name="Attempt to search for items without a light" tags="" position="275,600" size="100,100">(set: $number to (random:1,10))
+(if:$number is 1)[You probe around the area in search for anything useful. Somehow, you manage to stumble upon your //&#39;&#39;Identification card&#39;&#39;//.  &lt;div id = &quot;ID2&quot;&gt;&lt;img src=&quot;https://jsu21ges.github.io/images/ID.png&quot;&gt;&lt;/div&gt;
+
+
+
+
+
+
+
+
+
+
+You stow it away in your bag.]\
+(else:)[You wander around aimlessly, the search is hopeless. It&#39;s time to move on.]
+
+The Engines room is connected to the piloting room and the sensors room. Which way do you go? 
+[[Sensors-&gt;SCorridor]] or [[Piloting]]</tw-passagedata><tw-passagedata pid="17" name="Fight" tags="" position="175,750" size="100,100">(if: $gun is 0)[You take out your old pocket hatchet and grit your teeth.
+(set:$number to (random: 1,5))
+	(if:$number is 1 or 2)[Despite the clear disadvantage, you manage to fight of the giant alien spider. However you have sustained severe wounds in the process.
+		(if:$consumables is 0)[You look into your bag desperately to see if there is anything that can restore your health. Ultimately you find nothing. 
+        [[Try to stop the bleeding with your hands-&gt;death]]]\
+		(else:)[You look into your bag and find a consumable. Do you [[take the consumable]] or [[try to stop the bleeding with your hands-&gt;death]]?]
+        ]
+    (else-if: $number is 3)[Despite the clear disadvantage, you manage to defeat the spider. Miraculously, you come out virtually unscathed.
+    [[Continue to the sensors room -&gt;Sensors]]]
+	(else:)[You fight valiantly but the spider gets the best of you and turns you into its lunch. 
+    [[Restart?-&gt;start]]
+    ]
+]\
+
+(else-if: $gun is 1)[You pull out a burst laser and start blasting. 
+	(set:$number to (random: 1,3))
+	(if:$number is 3)[You manage to severely wound the spider, forcing it to retreat. However, in the process you sustained heavy wounds.
+		(if:$consumables is 0)[You look into your bag desperately to see if there is anything that can restore your health. Ultimately you find nothing. 
+        [[Try to stop the bleeding with your hands-&gt;death]]]\
+		(else:)[You look into your bag and find a consumable. Do you [[take the consumable]] or [[try to stop the bleeding with your hands-&gt;death]]?]]
+	(else:)[You manage to severely wound the spider, forcing it to retreat. 
+    [[Continue to the sensors room-&gt;Sensors]]]
+        ]\
+(else:)[You pull out two burst lasers from your bag and go on a rampage.
+ You managed to disintegrate the giant alien spider with your superior firepower. 
+ [[Continue to the sensors room-&gt;Sensors]]
+ ]
+ 
+ &lt;div id = &quot;gas&quot;&gt;
+&lt;img src = &quot;https://jsu21ges.github.io/images/gas.gif&quot;&gt;
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="18" name="Run" tags="" position="25,750" size="100,100">As you turn your head to run back, you realize that the exit has been blocked by a thick layer of spider webs!
+
+Looks like there&#39;s no place to run!
+
+&lt;div id = &quot;gas&quot;&gt;
+&lt;img src = &quot;https://jsu21ges.github.io/images/gas.gif&quot;&gt;
+&lt;/div&gt;
+
+[[Fight]] </tw-passagedata><tw-passagedata pid="19" name="Sensors" tags="" position="300,775" size="100,100">(if: $ID)[You enter the sensors room and find a //&#39;&#39;Burst Laser II&#39;&#39;//! Nice! &lt;img src=&quot;https://jsu21ges.github.io/images/burst_laser.png&quot;&gt;
+]\
+(else:)[You enter the sensors room and finally find your Identification Card. You store it in your bag. (set: $ID to true)
+&lt;img src=&quot;https://jsu21ges.github.io/images/ID.png&quot;&gt;]
+
+[[Head to the piloting room -&gt;Piloting]] </tw-passagedata><tw-passagedata pid="20" name="Wait" tags="" position="600,775" size="100,100">You feel a rumble on the ship. All of the spiders are heading towards the piloting room, they must somehow know that they&#39;re in danger!
+
+(set: $number to (random:1,2))
+(if: $number is 1)[An inumerable horde of spiders come bursting through the door and heading strait towards you. You don&#39;t have much time! 
+[[Detonate the station with you on board-&gt;Neutral end]]
+]\
+(else:)[You manage to squeeze in before the spiders come bursting through the door. The escape pod is ready to eject. What do you do?
+[[Press the button and eject!-&gt;Good end]]
+[[Get out of there!-&gt;Bad end]] 
+]</tw-passagedata><tw-passagedata pid="21" name="bomb" tags="" position="450,675" size="100,100">You set the space station to self detonate upon command. Once you get out of here, you can blow the whole space station up and finally get rid of the spiders.
+
+[[continue-&gt;Wait]]</tw-passagedata><tw-passagedata pid="22" name="Good end" tags="" position="575,925" size="100,100">You push the button for the space station to self destruct. The space pod ejects from the space station, and moments later you feel a massive shockwave as the space station ignites.
+
+You watch as the station explodes into millions of tiny pieces, along with the spiders on the station. 
+
+In your act of heroism, you did not only save yourself, but also managed to save everyone else from going on this cursed station.
+
+&lt;div id=&quot;explo&quot;&gt;
+&lt;img src= &quot;https://jsu21ges.github.io/images/explo.gif&quot;&gt;
+&lt;/div&gt;
+//&#39;&#39;THE END&#39;&#39;//</tw-passagedata><tw-passagedata pid="23" name="Neutral end" tags="" position="700,925" size="100,100">You decide that your only choice left is to press the button. The station explodes into millions of tiny pieces, along with the spiders on the station and you. 
+
+You&#39;ve saved many from sharing the same fate as yours, but at the cost of your own life.
+
+&lt;div id=&quot;explo&quot;&gt;
+&lt;img src= &quot;https://jsu21ges.github.io/images/explo.gif&quot;&gt;
+&lt;/div&gt;
+//&#39;&#39;THE END&#39;&#39;//</tw-passagedata><tw-passagedata pid="24" name="Bad end" tags="" position="450,800" size="100,100">The pod bursts away from the ship and you fly away from the space station. You can&#39;t help but think that you&#39;ve done something terrible by leaving the station intact. Someone else will lose their lives on that station.
+
+//&#39;&#39;THE END&#39;&#39;//</tw-passagedata><tw-passagedata pid="25" name="take the consumable" tags="" position="775,475" size="100,100">You take the consumable and quickly snarf it down. Much to your relief, you can feel your body recover rapidly.
+(set:$consumables to $consumables - 1)
+
+[[Continue to the engines room-&gt;Engines]]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
